@@ -7,25 +7,25 @@ import com.codingurkan.movieinformationapp.databinding.ActivityInfoBinding
 class InfoActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityInfoBinding
+    private lateinit var args: InformationItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val intent = intent
-        val secilenFilmIsmi =intent.getStringExtra("name")
-        val secilenFilmGorseli = intent.getIntExtra("image",0)
-        val secilenFilmYili =intent.getIntExtra("year",1)
-
-        binding.textView.text = secilenFilmIsmi
-        binding.imageView.background = resources.getDrawable(secilenFilmGorseli,null)
-        binding.textView2.text = secilenFilmYili.toString()
-
-
-
-
+        getArgs()
+        initUi()
     }
-
-
+    private fun getArgs(){
+       args = intent.getSerializableExtra("data") as InformationItem
+    }
+    private fun initUi(){
+        binding.apply {
+            textView.text = args.filmListesi
+            imageView.setImageResource(args.filmGorselleri)
+            textView2.text = args.yilListesi.toString()
+            textView3.text = args.basrolOyuncu
+            textView4.text = args.imdbScore.toString()
+        }
+    }
 }

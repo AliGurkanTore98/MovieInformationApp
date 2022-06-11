@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="#0E4CC8"
-        android:text="Test"
+        android:text="Ali Gürkan Töre"
         android:layout_margin="5dp">
 
     </TextView>
